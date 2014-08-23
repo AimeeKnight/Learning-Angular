@@ -1,0 +1,5 @@
+C:\dev\Pluralsight\Testing Javascript\Module1QUnit\Demos\Original\ResharperQUnitRunner\bin\ResharperQUnitRunner.dll
+C:\dev\Pluralsight\Testing Javascript\Module1QUnit\Demos\Original\ResharperQUnitRunner\bin\ResharperQUnitRunner.pdb
+C:\dev\Pluralsight\Testing Javascript\Module1QUnit\Demos\Original\ResharperQUnitRunner\obj\Debug\ResolveAssemblyReference.cache
+C:\dev\Pluralsight\Testing Javascript\Module1QUnit\Demos\Original\ResharperQUnitRunner\obj\Debug\ResharperQUnitRunner.dll
+C:\dev\Pluralsight\Testing Javascript\Module1QUnit\Demos\Original\ResharperQUnitRunner\obj\Debug\ResharperQUnitRunner.pdb

@@ -1,0 +1,25 @@
+{
+  "name": "grunt",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "gruntfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "grunt": "~0.4.0rc7"
+  },
+  "devDependencies": {
+    "grunt-contrib-jasmine": "~0.3.0rc5",
+    "grunt-contrib-qunit": "~0.1.1rc6",
+    "grunt-mocha": "~0.2.1",
+    "grunt-contrib-jshint": "~0.1.0",
+    "grunt-contrib-watch": "~0.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Joe Eames",
+  "license": "BSD"
+}

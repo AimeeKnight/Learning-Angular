@@ -1,0 +1,24 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="mocha.js"></script>
+  <script src="chai.js"></script>
+  <script>
+  mocha.setup({ui:'bdd', 
+	reporter: function(runner) {
+		new Mocha.reporters.HTML(runner);
+		new Mocha.reporters.Teamcity(runner);
+	}
+  });</script>
+  <script>expect = chai.expect;</script>
+  <script src="test.js"></script>
+  <script>
+    mocha.run();
+  </script>
+</body>
+</html>

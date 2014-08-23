@@ -1,0 +1,5 @@
+﻿
+function go() {
+	return true;
+}
+		

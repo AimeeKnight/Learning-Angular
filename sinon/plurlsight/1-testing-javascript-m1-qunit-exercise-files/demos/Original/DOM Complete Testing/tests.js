@@ -1,0 +1,3 @@
+test('DOM test', function() {
+	
+});
