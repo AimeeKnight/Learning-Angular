@@ -1,3 +1,0 @@
-test('DOM test', function() {
-	
-});
