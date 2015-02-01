@@ -30,7 +30,7 @@ app.directive('requiredFile',function() {
  });
 
 // directive for email validation
- .directive('validEmail', function() {
+app.directive('validEmail', function() {
    return {
      require: 'ngModel',
      link: function(scope, elem, attrs, ctrl) {
@@ -68,6 +68,42 @@ app.directive('requiredFile',function() {
      }
    };
  });
-});
 
+app.directive('validatePasswordMatch', function() {
+    return {
+      restrict: 'A',
+      require: 'ngModel',
+      link: function(scope, element, attrs, ctrl) {
 
+        // watch the main password field for changes
+        attrs.$observe('validatePasswordMatch', function (value) {
+          if (value !== ctrl.$viewValue && value !== '') {
+            ctrl.$setValidity('matchingPasswords', false);
+          } else {
+            ctrl.$setValidity('matchingPasswords', true);
+          }
+        });
+
+        // watch the password confirmation  field for changes
+        ctrl.$parsers.push(function(value) {
+          console.log(attrs.validatePasswordMatch);
+          //console.log(ctrl);
+          // set an empty input as invalid via matchingPasswords property so that
+          // the password check will only have one validation
+          if(ctrl.$isEmpty(value)) {
+            ctrl.$setValidity('matchingPasswords', false);
+            return value;
+          }
+
+          if (value !== attrs.validatePasswordMatch && attrs.validatePasswordMatch !== '') {
+            ctrl.$setValidity('matchingPasswords', false);
+            return value;
+          } else {
+            ctrl.$setValidity('matchingPasswords', true);
+            return undefined;
+          }
+        });
+
+      }
+    };
+  });
