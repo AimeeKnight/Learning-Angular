@@ -47,7 +47,7 @@ app.directive('validEmail', function() {
        };
 
        var isValidEmail = function(email) {
-         var EMAIL_REGEXP = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-z
+         var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i
          return EMAIL_REGEXP.test(email);
        };
 
@@ -76,6 +76,7 @@ app.directive('validatePasswordMatch', function() {
       link: function(scope, element, attrs, ctrl) {
 
         // watch the main password field for changes
+        // $observe is used instead of a scope watch since directive wants to watch changes on the attribute, not the controller scope
         attrs.$observe('validatePasswordMatch', function (value) {
           if (value !== ctrl.$viewValue && value !== '') {
             ctrl.$setValidity('matchingPasswords', false);
@@ -92,15 +93,15 @@ app.directive('validatePasswordMatch', function() {
           // the password check will only have one validation
           if(ctrl.$isEmpty(value)) {
             ctrl.$setValidity('matchingPasswords', false);
-            return value;
+            return undefined;
           }
 
           if (value !== attrs.validatePasswordMatch && attrs.validatePasswordMatch !== '') {
             ctrl.$setValidity('matchingPasswords', false);
-            return value;
+            return undefined;
           } else {
             ctrl.$setValidity('matchingPasswords', true);
-            return undefined;
+            return value;
           }
         });
 
