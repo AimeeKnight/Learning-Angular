@@ -32,6 +32,7 @@ app.directive('requiredFile',function() {
 // directive for email validation
 app.directive('validEmail', function() {
    return {
+     // NgModelController provides API for the ng-model directive
      require: 'ngModel',
      link: function(scope, elem, attrs, ctrl) {
 
@@ -54,6 +55,7 @@ app.directive('validEmail', function() {
        ctrl.$parsers.push(function(value) {
          if (ctrl.$isEmpty(value)) {
            ctrl.$setValidity('validEmail', true);
+           // Passes value to the next parser/formatter function and if there is none sets the $modelValue/$viewValue
            return value;
          }
          var email = extractEmail(value);
@@ -93,6 +95,7 @@ app.directive('validatePasswordMatch', function() {
           // the password check will only have one validation
           if(ctrl.$isEmpty(value)) {
             ctrl.$setValidity('matchingPasswords', false);
+            // Passes value to the next parser/formatter function and if there is none sets the $modelValue/$viewValue
             return undefined;
           }
 
@@ -108,3 +111,9 @@ app.directive('validatePasswordMatch', function() {
       }
     };
   });
+
+/**
+ * Notes:
+ * viewValue changes -> parsers -> modelValue -> if changed update model
+ * modelValue changes -> formatters -> viewValue -> if changed calls $render
+ **/
