@@ -76,16 +76,18 @@ app.directive('validatePasswordMatch', function() {
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attrs, ctrl) {
-
-        // watch the main password field for changes
-        // $observe is used instead of a scope watch since directive wants to watch changes on the attribute, not the controller scope
-        attrs.$observe('validatePasswordMatch', function (value) {
+        
+        var observer = function(value) {
           if (value !== ctrl.$viewValue && value !== '') {
             ctrl.$setValidity('matchingPasswords', false);
           } else {
             ctrl.$setValidity('matchingPasswords', true);
           }
-        });
+        };
+
+        // watch the main password field for changes
+        // $observe is used instead of a scope watch since directive wants to watch changes on the attribute, not the controller scope
+        attrs.$observe('validatePasswordMatch', observer);
 
         // watch the password confirmation  field for changes
         ctrl.$parsers.push(function(value) {
