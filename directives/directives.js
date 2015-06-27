@@ -76,7 +76,7 @@ app.directive('validatePasswordMatch', function() {
       restrict: 'A',
       require: 'ngModel',
       link: function(scope, element, attrs, ctrl) {
-        
+
         var observer = function(value) {
           if (value !== ctrl.$viewValue && value !== '') {
             ctrl.$setValidity('matchingPasswords', false);
