@@ -26,7 +26,13 @@ describe('Directive: validate-ip', function() {
     });
 
     it('should accept a single valid ip', function() {
-      form.ip.$setViewValue('66.249.69.126');
+      form.ip.$setViewValue('66.235.69.135');
+      $scope.$digest();
+      expect(form.ip.$valid).to.be.true;
+    });
+
+    it('should accept multiple valid ips regardless of spacing and cidr', function() {
+      form.ip.$setViewValue('66.235.69.135, 66.245.69.145,66.255.69.155/24');
       $scope.$digest();
       expect(form.ip.$valid).to.be.true;
     });

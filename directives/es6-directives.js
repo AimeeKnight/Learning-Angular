@@ -14,13 +14,15 @@
           return value;
         }
 
-        value = _.find(value.split(','), (x) => {
-          return ValidateIp.UTILITIES.ipRegex.test(x.trim());
+        let ips = value.split(',');
+        ips = _.map(ips, _.trim);
+        ips = _.filter(ips, (x) => {
+          return ValidateIp.UTILITIES.ipRegex.test(x);
         });
 
-        if (value) {
+        if (ips && ips.length > 0) {
           ctrl.$setValidity('validIp', true);
-          return value;
+          return ips.join();
         } else {
           ctrl.$setValidity('validIp', false);
           return undefined;
