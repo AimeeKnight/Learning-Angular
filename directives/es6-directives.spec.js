@@ -4,7 +4,7 @@ describe('Directive: validate-ip', function() {
     , elem
     , form;
 
-  beforeEach(module('ak.directives.validate-ip'));
+  beforeEach(module('fd.directives.validate-ip-list'));
 
   describe('validateIp', function() {
     var $compile;
@@ -13,7 +13,7 @@ describe('Directive: validate-ip', function() {
 
       $scope = $rootScope.$new();
       elem = angular.element('<form name="form">' +
-        '<input type="text" name="ip" ng-model="test.ip" ng-list valid-ip>' +
+        '<input type="text" name="ip" ng-model="test.ip" ng-list valid-ip-list>' +
         '</form>');
       $compile(elem)($scope);
       form = $scope.form;
@@ -38,7 +38,7 @@ describe('Directive: validate-ip', function() {
     });
 
     it('should not accept an invalid ip', function() {
-      form.ip.$setViewValue('abc123');
+      form.ip.$setViewValue('66.235.69.135,abc123');
       $scope.$digest();
       expect(form.ip.$valid).to.be.false;
     });
