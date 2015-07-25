@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <form name="main.form" ng-submit="main.submit()" novalidate>
+        <label for="inputEmail" class="sr-only">IP</label>
+        <input ng-model="main.valid_ips" name="valid_ips" type="text" class="form-control" placeholder="1.1.1.1" valid-ip-list>
+        <span class="text-muted" ng-show="main.form.valid_ips.$error.validIpList" translate>Separate whitelisted IPs (CIDR format) with a comma ",".</span>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
